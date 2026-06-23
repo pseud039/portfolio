@@ -36,7 +36,7 @@ function Hero() {
   return (
     <section id="top" className="pt-32 pb-4">
       <p className="rise font-mono text-[11px] text-[color:var(--muted)] tracking-widest lowercase mb-5">
-        saumya sharma · cse-aiml · batch '27
+        saumya sharma · cse-aiml · batch '28
       </p>
       <h1 className="rise rise-d1 font-serif text-[clamp(2.6rem,8vw,4.2rem)] font-normal leading-[1.05] tracking-tight lowercase">
         pseudo
