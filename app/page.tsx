@@ -15,12 +15,12 @@ export default function Home() {
     <>
       <Hero />
       <Divider />
-      <About />
-      <Divider />
+      {/* <About />
+      <Divider /> */}
       <Stack />
       <Divider />
-      <Stats />
-      <Divider />
+      {/* <Stats /> */}
+      {/* <Divider /> */}
       <ProjectsTeaser />
       <Divider />
       <ExperienceTeaser />
@@ -60,7 +60,7 @@ function Hero() {
           assumption you made three commits ago.
         </p>
         <p>
-          third-year at kiet, mentor at innogeeks, runner-up at sih — which means i know exactly what it feels like
+          third-year at <em className="font-serif text-[17px]" style={{ color: "var(--ink)" }}>kiet group of institutions</em>, mentor at innogeeks, runner-up at sih — which means i know exactly what it feels like
           to be second-best, and build harder for it.
         </p>
       </div>
@@ -103,7 +103,7 @@ function About() {
           </p>
           <p>
             at{" "}
-            <a href="#" className="link-underline" style={{ color: "var(--accent)" }}>
+            <a href="https://www.linkedin.com/company/innogeeks/" className="link-underline" style={{ color: "var(--accent)" }}>
               innogeeks
             </a>{" "}
             i mentor 20+ juniors on systems and backend development. explaining why your race condition is showing
@@ -153,49 +153,49 @@ function Stack() {
   );
 }
 
-function Stats() {
-  return (
-    <Reveal>
-      <section id="stats">
-        <SectionLabel>signal</SectionLabel>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-          <div>
-            <p className="font-mono text-[11px] text-[color:var(--muted)] mb-4 tracking-wide">github · @pseud039</p>
-            <div className="space-y-4">
-              {githubStats.map((s) => (
-                <div key={s.label}>
-                  <div className="flex justify-between items-baseline mb-1.5">
-                    <span className="text-[13px] text-[color:var(--ink-soft)]">{s.label}</span>
-                    <span className="font-mono text-[11.5px]" style={{ color: "var(--accent)" }}>
-                      {s.value}
-                    </span>
-                  </div>
-                  <div className="stat-bar" style={{ ["--w" as never]: `${s.bar}%` }} />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <p className="font-mono text-[11px] text-[color:var(--muted)] mb-4 tracking-wide">
-              wakatime · last 30 days
-            </p>
-            <div className="space-y-4">
-              {wakatime.map((w) => (
-                <div key={w.lang}>
-                  <div className="flex justify-between items-baseline mb-1.5">
-                    <span className="text-[13px] text-[color:var(--ink-soft)]">{w.lang}</span>
-                    <span className="font-mono text-[11.5px] text-[color:var(--muted)]">{w.hours}</span>
-                  </div>
-                  <div className="stat-bar" style={{ ["--w" as never]: `${w.pct}%` }} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    </Reveal>
-  );
-}
+// function Stats() {
+//   return (
+//     <Reveal>
+//       <section id="stats">
+//         <SectionLabel>signal</SectionLabel>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+//           <div>
+//             <p className="font-mono text-[11px] text-[color:var(--muted)] mb-4 tracking-wide">github · @pseud039</p>
+//             <div className="space-y-4">
+//               {githubStats.map((s) => (
+//                 <div key={s.label}>
+//                   <div className="flex justify-between items-baseline mb-1.5">
+//                     <span className="text-[13px] text-[color:var(--ink-soft)]">{s.label}</span>
+//                     <span className="font-mono text-[11.5px]" style={{ color: "var(--accent)" }}>
+//                       {s.value}
+//                     </span>
+//                   </div>
+//                   <div className="stat-bar" style={{ ["--w" as never]: `${s.bar}%` }} />
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//           <div>
+//             <p className="font-mono text-[11px] text-[color:var(--muted)] mb-4 tracking-wide">
+//               wakatime · last 30 days
+//             </p>
+//             <div className="space-y-4">
+//               {wakatime.map((w) => (
+//                 <div key={w.lang}>
+//                   <div className="flex justify-between items-baseline mb-1.5">
+//                     <span className="text-[13px] text-[color:var(--ink-soft)]">{w.lang}</span>
+//                     <span className="font-mono text-[11.5px] text-[color:var(--muted)]">{w.hours}</span>
+//                   </div>
+//                   <div className="stat-bar" style={{ ["--w" as never]: `${w.pct}%` }} />
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+//     </Reveal>
+//   );
+// }
 
 function ProjectsTeaser() {
   const teaser = projects.slice(0, TEASER_PROJECT_COUNT);

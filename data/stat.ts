@@ -33,11 +33,11 @@ export const wakatime = [
 
 export const elsewhere = [
   {
-    label: "Writing",
-    items: ["Dev.to", "Hashnode"],
+    label: "watching",
+    items: ["haikyuu!!", "demon slayer","samurai champloo","frieren","chainsaw man"],
   },
   {
-    label: "Community",
-    items: ["GitHub", "Discord"],
+    label: "listening",
+    items: ["fred again..", "bunt.","arijit singh","aditya rikhari","linkin park"],
   },
 ];

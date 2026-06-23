@@ -1,27 +1,27 @@
 export const experience = [
   {
     role: "backend engineering intern",
-    date: "2024 – present",
+    date: "Oct 2025 – May 2026",
     company: "elanine · remote",
-    desc: "delivery management backend — google maps routing with haversine fallback, route snapshot caching, paytm & shopify integrations. systems that handle real routing logic under nda.",
+    desc: "delivery management backend — google maps routing with structured fallback, route snapshot caching, paytm & shopify integrations. built systems that handle real routing logic under nda constraints.",
   },
   {
     role: "freelance developer",
-    date: "2024 – present",
-    company: "hitech billsoft · remote",
-    desc: "landing pages for billing software verticals — restaurant pos, supermarket pos, cafe pos. gst tooling, paytm-style api scaffold, client-side pdf generation.",
+    date: "2025 – present",
+    company: "nexus · remote",
+    desc: "built and shipped landing pages for billing software verticals — restaurant pos, gst verification tooling, paytm-style api scaffold, and many other.",
   },
   {
     role: "tech mentor",
-    date: "2024 – present",
+    date: "2025 – present",
     company: "innogeeks · kiet group",
     desc: "mentoring 20+ students on backend systems, typescript, and api design. workshops, code reviews, and the occasional 'why is your prisma schema doing that' debug.",
   },
   {
     role: "runner-up",
-    date: "2024",
+    date: "2025",
     company: "smart india hackathon · sih",
-    desc: "national-level. built under 36-hour pressure. came second. still thinking about it.",
+    desc: "national-level. built under immense pressure. college runner up. still thinking about it.",
   },
 ];export type ExperienceItem = {
   role: string;
