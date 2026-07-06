@@ -50,6 +50,8 @@ body{
 .border-rule{ border-color:var(--rule); }
 .text-accent{ color:var(--accent); }
 .bg-accent{ background:var(--accent); }
+.bg-ink-soft{ background:var(--ink-soft); }
+.text-bg-paper{ color:var(--bg); }
 
 ::selection{ background:var(--accent); color:var(--accent-ink); }
 

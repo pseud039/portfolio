@@ -8,6 +8,7 @@ import { EmailIcon, GithubIcon, LinkedinIcon, TwitterBirdIcon } from "@/lib/icon
 import type { CSSProperties } from "react";
 import nextimage from "next/image";
 import icon from "@/assets/icon.jpg";
+import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
   title: "Saumya Sharma — Developer Portfolio",
@@ -220,8 +221,8 @@ export default async function Home() {
       </section>
 
       <GitHubSection />
-
-      <section id="contact" className="rounded-2xl border border-rule bg-card/60 p-6 sm:p-8">
+      <ContactSection/>
+      {/* <section id="contact" className="rounded-2xl border border-rule bg-card/60 p-6 sm:p-8">
         <h2 className="text-xl font-semibold tracking-tight">Get in touch.</h2>
         <p className="mt-2 text-sm text-ink-soft leading-relaxed">
           Open to internships, collaborations, and interesting problems. Quickest way to reach me is{" "}
@@ -230,7 +231,7 @@ export default async function Home() {
           </a>
           .
         </p>
-      </section>
+      </section> */}
 
       <footer className="pt-2 pb-28 text-center text-[11px] font-mono text-ink-muted">© 2026 Saumya Sharma · built with care</footer>
     </main>

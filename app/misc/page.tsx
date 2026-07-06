@@ -7,5 +7,6 @@ export const metadata: Metadata = {
 };
 
 export default function MiscPage() {
-  return <MiscTabs />;
+  return <div>
+  <MiscTabs /></div>;
 }

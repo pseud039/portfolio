@@ -6,6 +6,8 @@ import Dock from "@/components/Dock";
 import LenisProvider from "@/components/LenisProvider";
 import ThemeScript from "@/components/ThemeScript";
 import {GridBackgroundDemo} from "@/components/background";
+import ZenitsuMood from "@/components/Anime";
+import router from "next/navigation"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -39,7 +41,8 @@ export default function RootLayout({
         <Header />
         
         <div className="flex-1">{children}</div>
-        <Dock />
+        
+        {/* <Dock /> */}
       </body>
     </html>
   );

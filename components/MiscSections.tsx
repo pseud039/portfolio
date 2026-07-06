@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ANIME, CONFIG, PINTEREST_IMAGES, SPOTIFY_TRACKS, TOP_ARTISTS, toSpotifyEmbedUrl } from "@/lib/data";
+import ZenitsuMood from "./Anime";
 
 function buildShuffledArtists() {
   return [...TOP_ARTISTS].sort(() => Math.random() - 0.5);
@@ -71,9 +72,11 @@ export function MusicSection({ id = "tab-music", className = "" }) {
 
 export function AnimeSection({ id = "tab-anime", className = "" }) {
   return (
+    <div>
+      
     <section id={id} className={panelClassName(className)}>
-      <h2 className="text-xl font-semibold tracking-tight mb-2">Anime.</h2>
-      <p className="text-sm text-ink-soft mb-5">Shows I keep coming back to, ranked by how often I rewatch them.</p>
+      <h2 className="text-xl font-semibold tracking-tight mb-2 flex items-center gap-2">Anime.<ZenitsuMood /></h2>
+      <p className="text-sm text-ink-soft mb-5">Shows I keep coming back to, ranked by how often I rewatch them.<mark className="mark-accent">(my fav is up above, you can pamper him by clicking on him!)</mark></p>
       <div id="anime-grid" className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {ANIME.map((anime) => (
           <div key={anime.title} className="rounded-xl border border-rule overflow-hidden">
@@ -83,6 +86,7 @@ export function AnimeSection({ id = "tab-anime", className = "" }) {
         ))}
       </div>
     </section>
+    </div>
   );
 }
 
