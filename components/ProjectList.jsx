@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import ProjectMedia from "./ProjectMedia";
 import { ArrowIcon } from "@/lib/icon";
 
 function NdaCard({ project, delay }) {
@@ -27,6 +28,7 @@ function NdaCard({ project, delay }) {
 function ProjectCard({ project: p, delay }) {
   return (
     <Reveal as="article" className="project-card overflow-hidden" delay={delay}>
+      {(p.image || p.video) && <ProjectMedia image={p.image} video={p.video} tone={p.tone} title={p.title} />}
       <div className="p-4">
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <h3 className="font-semibold text-[15px] tracking-tight flex items-center gap-2">

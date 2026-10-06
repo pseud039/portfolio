@@ -8,6 +8,7 @@ import { EmailIcon, GithubIcon, LinkedinIcon, TwitterBirdIcon } from "@/lib/icon
 import type { CSSProperties } from "react";
 import icon from "@/assets/icon.jpg";
 import ContactSection from "@/components/ContactSection";
+import SkillIcon from "@/components/SkillIcon";
 
 export const metadata: Metadata = {
   title: "Saumya Sharma — Developer Portfolio",
@@ -166,18 +167,15 @@ export default async function Home() {
             <div key={label as string}>
               <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-ink-muted mb-3">{label as string}</p>
               <div className="flex flex-wrap gap-2">
-                {(items as Array<{ name: string; slug: string; color: string }>).map((item) => {
-                  const initials = item.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase();
-                  return (
-                    <span key={item.name} className="chip" style={{ ["--tone" as string]: item.color } as CSSProperties}>
+                {(items as Array<{ name: string; icon: string }>).map((item) => (
+                  <span key={item.name} className="chip" style={{ ["--tone" as string]: "var(--accent)" } as CSSProperties}>
                       <span className="chip-glow" />
-                      <span className="chip-icon" style={{ background: item.color }}>
-                        <span className="text-white text-[9px] font-bold font-mono">{initials}</span>
+                      <span className="chip-icon">
+                        <SkillIcon name={item.name} icon={item.icon} />
                       </span>
                       <span className="relative">{item.name}</span>
                     </span>
-                  );
-                })}
+                ))}
               </div>
             </div>
           ))}
