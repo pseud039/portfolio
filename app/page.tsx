@@ -6,7 +6,6 @@ import TypingLoop from "@/components/TypingLoop";
 import LiveClock from "@/components/LiveClock";
 import { EmailIcon, GithubIcon, LinkedinIcon, TwitterBirdIcon } from "@/lib/icon";
 import type { CSSProperties } from "react";
-import nextimage from "next/image";
 import icon from "@/assets/icon.jpg";
 import ContactSection from "@/components/ContactSection";
 
@@ -64,8 +63,7 @@ async function GitHubSection() {
           @pseud039 ↗
         </a>
       </div>
-      <div id="gh-stats" className="mt-4 grid grid-cols-2 gap-3" />
-      <div className="rounded-xl border border-rule bg-paper p-4">
+      <div className="mt-4 rounded-xl border border-rule bg-paper p-4">
         <div id="gh-months" className="mb-1">
           <div className="grid gap-[3px]" style={{ gridTemplateColumns: `repeat(${displayWeeks.length}, 1fr)` }}>
             {displayWeeks.map((_, index) => {
@@ -221,19 +219,9 @@ export default async function Home() {
       </section>
 
       <GitHubSection />
-      <ContactSection/>
-      {/* <section id="contact" className="rounded-2xl border border-rule bg-card/60 p-6 sm:p-8">
-        <h2 className="text-xl font-semibold tracking-tight">Get in touch.</h2>
-        <p className="mt-2 text-sm text-ink-soft leading-relaxed">
-          Open to internships, collaborations, and interesting problems. Quickest way to reach me is{" "}
-          <a href={`mailto:${CONFIG.email}`} className="underline decoration-accent decoration-2 underline-offset-2 hover:text-ink">
-            email
-          </a>
-          .
-        </p>
-      </section> */}
+      <ContactSection />
 
-      <footer className="pt-2 pb-28 text-center text-[11px] font-mono text-ink-muted">© 2026 Saumya Sharma · built with care</footer>
+      <footer className="pt-2 pb-28 text-center text-[11px] font-mono text-ink-muted">© {new Date().getFullYear()} Saumya Sharma · built with care</footer>
     </main>
   );
 }

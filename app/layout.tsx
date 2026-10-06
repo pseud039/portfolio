@@ -2,12 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import Dock from "@/components/Dock";
 import LenisProvider from "@/components/LenisProvider";
 import ThemeScript from "@/components/ThemeScript";
-import {GridBackgroundDemo} from "@/components/background";
-import ZenitsuMood from "@/components/Anime";
-import router from "next/navigation"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -39,10 +35,7 @@ export default function RootLayout({
           <span style={{ background: "#c9776b", bottom: "-15%", right: "-10%" }} />
         </div>
         <Header />
-        
         <div className="flex-1">{children}</div>
-        
-        {/* <Dock /> */}
       </body>
     </html>
   );

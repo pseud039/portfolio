@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import { ArrowIcon } from "./icons";
+import { ArrowIcon } from "@/lib/icon";
 
 function NdaCard({ project, delay }) {
   return (

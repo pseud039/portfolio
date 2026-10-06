@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CONFIG } from "@/lib/data";
-import { HomeIcon, TwitterBirdIcon, GithubIcon, LinkedinIcon, EmailIcon } from "./icons";
+import { HomeIcon, TwitterBirdIcon, GithubIcon, LinkedinIcon, EmailIcon } from "@/lib/icon";
 
 export default function Dock() {
   return (

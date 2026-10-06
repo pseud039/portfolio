@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { SunIcon, MoonIcon } from "./icons";
+import { SunIcon, MoonIcon } from "@/lib/icon";
 
 export default function ThemeToggle({ className = "" }) {
   const [dark, setDark] = useState(null);

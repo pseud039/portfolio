@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ChevronDownIcon } from "./icons";
+import { ChevronDownIcon } from "@/lib/icon";
 import { MORE_MENU } from "@/lib/data";
 
 export default function MoreMenu({ activeHref }) {
