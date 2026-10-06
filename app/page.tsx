@@ -81,9 +81,9 @@ async function GitHubSection() {
           <div className="grid gap-[3px]" style={{ gridTemplateColumns: `repeat(${displayWeeks.length}, 1fr)` }}>
             {displayWeeks.map((week, weekIndex) => (
               <div key={`week-${weekIndex}`} className="grid gap-[3px] grid-rows-7">
-                {week.map((day) => (
+                {week.map((day, dayIndex) => (
                   <span
-                    key={day.date}
+                    key={day.date || dayIndex}
                     className="gh-cell"
                     style={{ background: level(day.count) }}
                     title={`${day.date}: ${day.count} contributions`}

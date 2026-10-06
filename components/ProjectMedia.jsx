@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Poster image by default; the video only starts downloading on first hover
 // (or tap on touch screens), so scrolling past cards never pulls video data.
-export default function ProjectMedia({ image, video, tone, title }) {
+export default function ProjectMedia({ image, video, tone, title, children }) {
   const rootRef = useRef(null);
   const videoRef = useRef(null);
   const [src, setSrc] = useState("");
@@ -43,12 +43,13 @@ export default function ProjectMedia({ image, video, tone, title }) {
   return (
     <div
       ref={rootRef}
-      className="project-media"
+      className={`project-media ${video ? "has-video" : ""}`}
       style={{ background: tone }}
       onPointerEnter={(e) => e.pointerType === "mouse" && play()}
       onPointerLeave={(e) => e.pointerType === "mouse" && stop()}
       onClick={() => (playing ? stop() : play())}
     >
+      {!image && children}
       {image && (
         <img src={image} alt={`${title} preview`} loading="lazy" decoding="async" className="project-media-img" />
       )}

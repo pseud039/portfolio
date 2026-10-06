@@ -141,23 +141,29 @@ footer a:hover, footer button:hover{
 /* ---------- project cards ---------- */
 .project-media{
   position:relative;
-  aspect-ratio: 16 / 9;
-  max-height: 260px;
+  aspect-ratio: 16 / 10;
   width:100%;
   overflow:hidden;
   border-bottom:1px solid var(--rule);
-  cursor:pointer;
   /* own compositing layer so hover/fades never repaint the page while scrolling */
   contain: paint;
   transform: translateZ(0);
 }
+.project-media.has-video{ cursor:pointer; }
+.project-media-placeholder{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  font-size:1.35rem; font-weight:600; letter-spacing:-.02em;
+  color:rgba(24,22,15,.35);
+}
+.project-media-placeholder.is-light{ color:rgba(255,255,255,.4); }
 .project-media-img,
 .project-media-video{
   position:absolute; inset:0;
   width:100%; height:100%;
   object-fit:cover;
 }
-.project-media-img{ transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.project-media-img{ object-position: top center; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 .project-card:hover .project-media-img{ transform: scale(1.03); }
 .project-media-video{ opacity:0; transition: opacity .35s ease; }
 .project-media-video.is-playing{ opacity:1; }
@@ -172,56 +178,36 @@ footer a:hover, footer button:hover{
 }
 .project-media-hint.is-hidden{ opacity:0; }
 .project-card{
+  display:flex; flex-direction:column;
+  height:100%;
+  overflow:hidden;
   border:1px solid var(--rule);
   background:var(--card);
   border-radius:1rem;
   transition: border-color .25s ease, transform .3s ease;
 }
 .project-card:hover{ border-color: color-mix(in srgb, var(--accent) 40%, var(--rule)); transform: translateY(-2px); }
-.project-img{
-  height:170px;
-  background-size:cover;
-  background-position:center;
-  background-color: var(--rule);
-}
 
-.nda-card{
-  background:var(--card);
-  position:relative;
-  border-radius:1rem;
-  overflow:hidden;
+
+.project-pill{
+  font-size:11.5px;
+  padding:.2rem .65rem;
+  border-radius:999px;
   border:1px solid var(--rule);
-  height: 170px;
-  cursor:default;
+  background:var(--bg);
+  color:var(--ink-soft);
 }
-.nda-card .project-img{ height:100%; }
-.blurred-img{ filter: blur(16px) saturate(.9); transform: scale(1.12); }
-.nda-lock{
-  position:absolute; inset:0;
-  display:flex; align-items:end; justify-content:right;
-  padding: 1rem;
-  color:rgba(255,255,255,.6);
-  font-family:'JetBrains Mono', monospace;
-  font-size:.7rem;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  transition: opacity .35s ease;
+.project-btn{
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-size:12.5px; font-weight:500;
+  padding:.35rem .8rem;
+  border-radius:999px;
+  border:1px solid var(--rule);
+  background:var(--bg);
+  color:var(--ink-soft);
+  transition: border-color .2s ease, color .2s ease;
 }
-.nda-desc{
-  position:absolute; inset:0;
-  display:flex; align-items:center;
-  padding: 1.5rem 2rem;
-  font-size:.85rem;
-  line-height:1.6;
-  color:#f1efe8;
-  background: rgba(10,10,8,.55);
-  opacity:1;
-  transition: opacity .35s ease;
-  filter: blur(1.2px) saturate(.9); transform: scale(1);
-}
-.nda-card:hover {  border-color: color-mix(in srgb, var(--accent) 40%, var(--rule));transform: translateY(-2px);  }
-.nda-card:hover .nda-desc{ opacity:1; filter: blur(0) saturate(1); transform: scale(1); }
-.nda-card:hover .nda-lock{ opacity:1; }
+.project-btn:hover{ border-color:var(--accent); color:var(--ink); }
 
 /* ---------- timeline (experience / education) ---------- */
 .timeline-item{
