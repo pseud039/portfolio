@@ -2,176 +2,177 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { more } from "@/data/profile";
 import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
-  { label: "Experience", href: "/#experience" },
+  // { label: "Experience", href: "/#experience" },
 ];
+
+// "/projects/termix" should still highlight "Projects"
+const isActive = (pathname: string, href: string) =>
+  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 
 export function Nav({ brand }: { brand: string }) {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
 
+  // Separate state for desktop dropdown and mobile menu.
+  // (Before, both shared one state + one ref, so the ref pointed at the hidden
+  // mobile menu on desktop, and clicking "more" closed then instantly re-opened it.)
+  const [moreOpen, setMoreOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const headerRef = useRef<HTMLElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null);
+
+  // Close everything on route change
   useEffect(() => {
-    const close = (event: PointerEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMenuOpen(false);
+    setMoreOpen(false);
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Outside click + Escape
+  useEffect(() => {
+    const onDown = (e: PointerEvent) => {
+      const t = e.target as Node;
+      if (moreRef.current && !moreRef.current.contains(t)) setMoreOpen(false);
+      if (headerRef.current && !headerRef.current.contains(t)) setMobileOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMoreOpen(false);
+        setMobileOpen(false);
       }
     };
-    document.addEventListener("pointerdown", close);
-    return () => document.removeEventListener("pointerdown", close);
+    document.addEventListener("pointerdown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
   }, []);
 
-  const isMoreActive = more.some((m) => m.href === pathname);
+  // Border + stronger blur once the page scrolls
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const isMoreActive = more.some((m) => isActive(pathname, m.href));
 
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 20,
-        background: "color-mix(in srgb, var(--bg) 85%, transparent)",
-        backdropFilter: "blur(10px)",
-      }}
-    >
-      <div
-        style={{
-          width: "min(100% - 48px, 750px)",
-          margin: "0 auto",
-          padding: "28px 0",
-          display: "grid",
-          gridTemplateColumns: "1fr auto 1fr",
-          alignItems: "center",
-        }}
-      >
+    <header ref={headerRef} className="site-header" data-scrolled={scrolled}>
+      <div className="nav-inner">
         {/* Brand */}
-        <Link
-          href="/"
-          style={{
-            font: "400 15px var(--mono)",
-            textDecoration: "none",
-            color: "var(--mut)",
-          }}
-        >
+        <Link href="/" className="nav-brand">
           {brand}
         </Link>
 
-        {/* Pills */}
-        <nav
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            font: "500 15px var(--mono)",
-            position: "relative",
-          }}
-        >
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              style={{
-                background: pathname === item.href ? "var(--soft)" : "none",
-                border: 0,
-                color: pathname === item.href ? "var(--fg)" : "var(--mut)",
-                font: "inherit",
-                padding: "8px 16px",
-                borderRadius: "8px",
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                lineHeight: 1.2,
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
+        {/* Desktop pills */}
+        <nav className="desktop-nav" aria-label="Main">
+          {NAV_ITEMS.map((item) => {
+            const active = isActive(pathname, item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="nav-pill"
+                data-active={active}
+                aria-current={active ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
 
-          {/* More button */}
-          <div ref={menuRef} style={{ position: "relative" }}>
+          <div ref={moreRef} className="more-wrap">
             <button
               type="button"
-              aria-expanded={menuOpen}
+              className="nav-pill"
+              data-active={isMoreActive}
+              aria-expanded={moreOpen}
               aria-haspopup="menu"
-              onClick={() => setMenuOpen((o) => !o)}
-              style={{
-                background: isMoreActive ? "var(--soft)" : "none",
-                border: 0,
-                color: isMoreActive ? "var(--fg)" : "var(--mut)",
-                font: "inherit",
-                padding: "8px 16px",
-                borderRadius: "8px",
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                lineHeight: 1.2,
-              }}
+              aria-controls="more-menu"
+              onClick={() => setMoreOpen((o) => !o)}
             >
               more
-              <svg
-                style={{ width: 17, height: 17, fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
+              <svg className="chev" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </button>
 
-            {menuOpen && (
-              <div
-                role="menu"
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  top: "100%",
-                  marginTop: "10px",
-                  width: "264px",
-                  background: "var(--card)",
-                  border: "1px solid var(--bd)",
-                  borderRadius: "14px",
-                  padding: "8px",
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "8px",
-                  boxShadow: "0 12px 30px #0006",
-                }}
-              >
-                {more.map((m) => (
-                  <Link
-                    key={m.href}
-                    href={m.href}
-                    role="menuitem"
-                    onClick={() => setMenuOpen(false)}
-                    style={{
-                      position: "relative",
-                      display: "block",
-                      height: "72px",
-                      borderRadius: "10px",
-                      overflow: "hidden",
-                      backgroundImage: `url('${m.image}'), ${m.tone}`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      outline: pathname === m.href ? "2px solid var(--acc)" : "none",
-                    }}
-                    className="menu-tile"
-                  >
-                    <span>{m.label}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
+            {/* Always mounted so it can animate in AND out */}
+            <div id="more-menu" role="menu" className="more-menu" data-open={moreOpen} inert={!moreOpen}>
+              {more.map((m) => (
+                <Link
+                  key={m.href}
+                  href={m.href}
+                  role="menuitem"
+                  className="menu-tile"
+                  data-active={isActive(pathname, m.href)}
+                  style={{ backgroundImage: `url('${m.image}'), ${m.tone}` }}
+                >
+                  <span>{m.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </nav>
 
-        {/* Theme toggle */}
-        <div style={{ justifySelf: "end" }}>
+        {/* Desktop theme toggle */}
+        <div className="desktop-theme">
           <ThemeToggle />
+        </div>
+
+        {/* Mobile actions */}
+        <div className="mobile-actions">
+          <ThemeToggle />
+          <button
+            type="button"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            data-open={mobileOpen}
+            onClick={() => setMobileOpen((o) => !o)}
+            className="mobile-menu-button"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu (height-animated via grid rows 0fr -> 1fr) */}
+      <div id="mobile-menu" className="mobile-menu-wrap" data-open={mobileOpen} inert={!mobileOpen}>
+        <div className="mobile-menu">
+          <div className="mobile-menu-card">
+            {NAV_ITEMS.map((item) => (
+              <Link key={item.href} href={item.href} className="mobile-link" data-active={isActive(pathname, item.href)}>
+                {item.label}
+              </Link>
+            ))}
+            <div className="mobile-menu-label">More</div>
+            <div className="mobile-more-grid">
+              {more.map((m) => (
+                <Link
+                  key={m.href}
+                  href={m.href}
+                  className="menu-tile"
+                  data-active={isActive(pathname, m.href)}
+                  style={{ backgroundImage: `url('${m.image}'), ${m.tone}` }}
+                >
+                  <span>{m.label}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </header>

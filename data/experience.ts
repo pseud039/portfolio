@@ -8,7 +8,7 @@ export const experience: ExperienceItem[] = [
     logo: "E",
     logoImg: {
       dark: "/assets/experience-assets/elanine-white.png",
-      light: "/assets/experience-assets/elanine-dark.png",
+      light: "/assets/experience-assets/elanine-dark.svg",
       link: "https://www.elanine.com",
     },
     org: "Elanine",
