@@ -1,294 +1,176 @@
 @import "tailwindcss";
 
-.bg-paper\/75{ background-color: color-mix(in srgb, var(--bg) 75%, transparent); }
-.bg-paper\/90{ background-color: color-mix(in srgb, var(--bg) 90%, transparent); }
-.bg-card\/60{ background-color: color-mix(in srgb, var(--card) 60%, transparent); }
-.border-rule\/60{ border-color: color-mix(in srgb, var(--rule) 60%, transparent); }
-.text-accent-ink{ color: var(--accent-ink); }
-
-:root{
-  --bg:#f7f5ef;
-  --card:#ffffff;
-  --ink:#18160f;
-  --ink-soft:#4c4738;
-  --ink-muted:#8b8574;
-  --rule:#e4e0d2;
-  --accent:#b9791a;
-  --accent-ink:#18160f;
-  --accent-soft:rgba(185,121,26,.12);
-  --gh-0:#e4e0d2; --gh-1:#9be9a8; --gh-2:#40c463; --gh-3:#30a14e; --gh-4:#216e39;
-}
-html.dark{
-  --bg:#0a0a08;
-  --card:#131210;
-  --ink:#f3f0e8;
-  --ink-soft:#c7c2b4;
-  --ink-muted:#847e6d;
-  --rule:#242019;
-  --accent:#e8b339;
-  --accent-ink:#141105;
-  --accent-soft:rgba(232,179,57,.12);
-  --gh-0:#161b11; --gh-1:#0e4429; --gh-2:#006d32; --gh-3:#26a641; --gh-4:#39d353;
+/* ─── Design tokens ──────────────────────────────────────────── */
+:root {
+  --bg: #0a0a0a;
+  --fg: #f2f2f2;
+  --mut: #9b9ba1;
+  --card: #111113;
+  --bd: #232327;
+  --soft: #1a1a1d;
+  --acc: #22c55e;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
 }
 
-*{ border-color: var(--rule); }
-html{ background:var(--bg); color-scheme: light; }
-html.dark{ color-scheme: dark; }
-body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'Inter', system-ui, sans-serif;
-  transition: background-color .25s ease, color .25s ease;
-}
-.font-mono{ font-family:'JetBrains Mono', ui-monospace, monospace; }
-
-.bg-paper{ background:var(--bg); }
-.bg-card{ background:var(--card); }
-.text-ink{ color:var(--ink); }
-.text-ink-soft{ color:var(--ink-soft); }
-.text-ink-muted{ color:var(--ink-muted); }
-.border-rule{ border-color:var(--rule); }
-.text-accent{ color:var(--accent); }
-.bg-accent{ background:var(--accent); }
-.bg-ink-soft{ background:var(--ink-soft); }
-.text-bg-paper{ color:var(--bg); }
-
-::selection{ background:var(--accent); color:var(--accent-ink); }
-
-a, button{ -webkit-tap-highlight-color: transparent; }
-
-header a, header button,
-main a, main button,
-footer a, footer button{
-  cursor:pointer;
-  transition: color .25s ease, background-color .25s ease, border-color .25s ease, transform .3s ease, box-shadow .3s ease;
+[data-theme="light"] {
+  --bg: #f6f6f4;
+  --fg: #141414;
+  --mut: #686870;
+  --card: #fff;
+  --bd: #e0e0dc;
+  --soft: #ececea;
+  --acc: #15803d;
+  color-scheme: light;
 }
 
-header a:hover, header button:hover,
-main a:hover, main button:hover,
-footer a:hover, footer button:hover{
-  transform: translateY(-2px);
+/* ─── Tailwind theme tokens ──────────────────────────────────── */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-mut: var(--mut);
+  --color-card: var(--card);
+  --color-bd: var(--bd);
+  --color-soft: var(--soft);
+  --color-acc: var(--acc);
 }
 
-.dock a, .dock button{
-  cursor:pointer;
-  transition: color .2s ease, background-color .2s ease;
+/* ─── Base ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.mark-accent{
-  background: var(--accent-soft);
-  color: var(--ink);
-  padding: 0 .2rem;
-  border-radius: 3px;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
-/* ---------- cursor / typing loop ---------- */
-.type-cursor{
-  display:inline-block;
-  width:2px;
-  height:1em;
-  background: var(--accent);
-  margin-left:2px;
-  vertical-align:-2px;
-  animation: blink 1s step-end infinite;
-}
-@keyframes blink{ 50%{ opacity:0; } }
-
-/* ---------- reveal on scroll ---------- */
-.reveal{
-  opacity:0;
-  transform: translateY(14px);
-  transition: opacity .6s cubic-bezier(.16,1,.32,1), transform .6s cubic-bezier(.16,1,.32,1);
-}
-.reveal.in{ opacity:1; transform:translateY(0); }
-
-/* ---------- tech chip, colored hover ---------- */
-.chip{
-  position:relative;
-  display:inline-flex; align-items:center; gap:.5rem;
-  border:1px solid var(--rule);
-  background:var(--card);
-  border-radius:.6rem;
-  padding:.35rem .7rem .35rem .35rem;
-  font-family:'JetBrains Mono', monospace;
-  font-size:.75rem;
-  color:var(--ink-soft);
-  overflow:hidden;
-  cursor:default;
-  transition: color .25s ease, border-color .25s ease, transform .2s ease;
-}
-.chip:hover{ color:var(--ink); transform:translateY(-2px); }
-.chip .chip-glow{
-  position:absolute; inset:0; opacity:0; pointer-events:none;
-  transition:opacity .3s ease;
-  background: radial-gradient(120px 60px at 20% 0%, var(--tone) 0%, transparent 70%);
-}
-.chip:hover .chip-glow{ opacity:.22; }
-.chip:hover{ border-color: color-mix(in srgb, var(--tone) 55%, var(--rule)); }
-.chip-icon{
-  display:grid; place-items:center;
-  width:26px; height:26px; border-radius:6px;
-  background: var(--rule);
-  overflow:hidden;
-  transition: transform .25s ease;
-}
-.chip:hover .chip-icon{ transform: scale(1.12) rotate(-4deg); }
-.chip-icon img{ width:100%; height:100%; display:block; }
-.chip-icon .icon-light{ display:none; }
-:root:not(.dark) .chip-icon .icon-light{ display:block; }
-:root:not(.dark) .chip-icon .icon-dark{ display:none; }
-
-/* ---------- project cards ---------- */
-.project-media{
-  position:relative;
-  aspect-ratio: 16 / 10;
-  width:100%;
-  overflow:hidden;
-  border-bottom:1px solid var(--rule);
-  /* own compositing layer so hover/fades never repaint the page while scrolling */
-  contain: paint;
-  transform: translateZ(0);
-}
-.project-media.has-video{ cursor:pointer; }
-.project-media-placeholder{
-  position:absolute; inset:0;
-  display:grid; place-items:center;
-  font-size:1.35rem; font-weight:600; letter-spacing:-.02em;
-  color:rgba(24,22,15,.35);
-}
-.project-media-placeholder.is-light{ color:rgba(255,255,255,.4); }
-.project-media-img,
-.project-media-video{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-}
-.project-media-img{ object-position: top center; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
-.project-card:hover .project-media-img{ transform: scale(1.03); }
-.project-media-video{ opacity:0; transition: opacity .35s ease; }
-.project-media-video.is-playing{ opacity:1; }
-.project-media-hint{
-  position:absolute; right:.6rem; bottom:.6rem;
-  font-family:'JetBrains Mono', monospace; font-size:.65rem;
-  padding:.2rem .45rem; border-radius:.4rem;
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
-  color: var(--ink-soft);
-  border:1px solid var(--rule);
-  transition: opacity .25s ease;
-}
-.project-media-hint.is-hidden{ opacity:0; }
-.project-card{
-  display:flex; flex-direction:column;
-  height:100%;
-  overflow:hidden;
-  border:1px solid var(--rule);
-  background:var(--card);
-  border-radius:1rem;
-  transition: border-color .25s ease, transform .3s ease;
-}
-.project-card:hover{ border-color: color-mix(in srgb, var(--accent) 40%, var(--rule)); transform: translateY(-2px); }
-
-
-.project-pill{
-  font-size:11.5px;
-  padding:.2rem .65rem;
-  border-radius:999px;
-  border:1px solid var(--rule);
-  background:var(--bg);
-  color:var(--ink-soft);
-}
-.project-btn{
-  display:inline-flex; align-items:center; gap:.4rem;
-  font-size:12.5px; font-weight:500;
-  padding:.35rem .8rem;
-  border-radius:999px;
-  border:1px solid var(--rule);
-  background:var(--bg);
-  color:var(--ink-soft);
-  transition: border-color .2s ease, color .2s ease;
-}
-.project-btn:hover{ border-color:var(--accent); color:var(--ink); }
-
-/* ---------- timeline (experience / education) ---------- */
-.timeline-item{
-  border-left: 2px solid color-mix(in srgb, var(--accent) 45%, var(--rule));
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px / 1.6 var(--sans);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* ---------- github heatmap ---------- */
-.gh-cell{
-  width:100%;
-  aspect-ratio:1/1;
-  border-radius:2px;
-  background: var(--gh-0);
+a {
+  color: inherit;
 }
 
-/* ---------- dock nav ---------- */
-.dock{
-  border:1px solid var(--rule);
-  background: color-mix(in srgb, var(--card) 85%, transparent);
-  backdrop-filter: blur(10px);
+/* ─── Experience logo theme-aware ───────────────────────────── */
+.lg-l {
+  display: none;
 }
-.dock a{
-  color: var(--ink-soft);
+[data-theme="light"] .lg-l {
+  display: block;
 }
-.dock a:hover{ color:var(--ink); background: var(--accent-soft); }
-
-/* ---------- spotify-styled widget ---------- */
-.spotify-card{
-  background: linear-gradient(180deg, #121212, #0a0a0a);
-  border-radius:1rem;
-  border:1px solid #1f1f1f;
-  color:#eaeaea;
-}
-.spotify-track{
-  border-radius:.65rem;
-  transition: background-color .2s ease;
-}
-.spotify-track:hover{ background: rgba(255,255,255,.06); }
-.spotify-art{
-  width:44px; height:44px; border-radius:.4rem; flex-shrink:0;
-}
-.spotify-bar{
-  width:3px; background:#1db954; border-radius:2px;
-  animation: eq 1s ease-in-out infinite;
-}
-@keyframes eq{ 0%,100%{ height:4px; } 50%{ height:14px; } }
-
-/* misc/ambient gradient blobs */
-.ambient-blob{
-  position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;
-}
-.ambient-blob span{
-  position:absolute; width:46vw; height:46vw; border-radius:9999px;
-  filter: blur(90px); opacity:.16;
+[data-theme="light"] .lg-d {
+  display: none;
 }
 
-/* ---------- "more" dropdown thumbnails ---------- */
-.more-menu-tile{
-  position:relative;
-  display:block;
-  height:64px;
-  border-radius:.65rem;
-  overflow:hidden;
-  background-size:cover;
-  background-position:center;
-}
-.more-menu-tile .more-menu-overlay{
-  position:absolute; inset:0;
-  background: linear-gradient(0deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
-  display:flex; align-items:end;
-  padding: .4rem .55rem;
-}
-.more-menu-tile .more-menu-label{
-  font-size:.78rem;
-  font-weight:600;
-  color:#f3f0e8;
+/* ─── GitHub heatmap ─────────────────────────────────────────── */
+.hm {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 1fr);
+  gap: 5px;
 }
 
-@media (prefers-reduced-motion: reduce){
-  .reveal{ transition:none; opacity:1; transform:none; }
-  .type-cursor{ animation:none; }
-  .spotify-bar{ animation:none; }
-  .project-media-img{ transition:none; }
-  .project-card:hover .project-media-img{ transform:none; }
+.hm i {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--soft);
+  display: block;
+}
+
+.hm i[data-l="1"] { background: #0e4429; }
+.hm i[data-l="2"] { background: #006d32; }
+.hm i[data-l="3"] { background: #26a641; }
+.hm i[data-l="4"] { background: #39d353; }
+
+.hl {
+  display: grid;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--mut);
+}
+
+/* ─── Contact card hands background ─────────────────────────── */
+.cbg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url(/assets/frame-1.webp) center / cover no-repeat;
+  opacity: 0.7;
+  mix-blend-mode: screen;
+}
+
+[data-theme="light"] .cbg {
+  filter: invert(1);
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+}
+
+/* ─── Tech chip color-mix tinting ───────────────────────────── */
+.chip {
+  --c: #888;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+  background: color-mix(in srgb, var(--c) 9%, var(--card));
+}
+
+.chip img {
+  width: 18px;
+  height: 18px;
+}
+
+.chip em {
+  font: 700 10px var(--mono);
+  font-style: normal;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--c) 35%, transparent);
+}
+
+/* bio inline chip (smaller) */
+.bio-chip {
+  height: 30px;
+  padding: 0 11px;
+  font: 600 14px var(--mono);
+  border-radius: 8px;
+  vertical-align: middle;
+  margin: 0 2px;
+  color: var(--fg);
+}
+
+.bio-chip img,
+.bio-chip em {
+  width: 16px;
+  height: 16px;
+}
+
+/* ─── Nav more menu tiles ────────────────────────────────────── */
+.menu-tile span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 10px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.08) 60%, transparent);
+  color: #f3f0e8;
+  font: 600 14px var(--sans);
 }
