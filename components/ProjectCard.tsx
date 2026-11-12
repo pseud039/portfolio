@@ -67,9 +67,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
           flex: 1,
         }}
       >
-        <h3 style={{ margin: 0, fontSize: "18px", fontWeight: 500 }}>{title}</h3>
+        <h3 style={{ margin: 0, font: "500 18px var(--mono)" }}>{title}</h3>
         <small style={{ color: "var(--mut)", font: "400 12px var(--mono)" }}>{meta}</small>
-        <p style={{ margin: 0, color: "var(--mut)", fontSize: "14px", flex: 1 }}>{desc}</p>
+        <p style={{ margin: 0, color: "var(--mut)", font: "400 14px/1.6 var(--mono)", flex: 1 }}>{desc}</p>
 
         {/* Tags */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
@@ -77,7 +77,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <span
               key={t}
               style={{
-                fontSize: "12px",
+                font: "400 12px var(--mono)",
                 border: "1px solid var(--bd)",
                 background: "var(--soft)",
                 padding: "3px 10px",

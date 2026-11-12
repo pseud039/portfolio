@@ -11,13 +11,12 @@ import { projects } from "@/data/projects";
 import { education, contact } from "@/data/education";
 
 const sectionStyle: React.CSSProperties = {
-  maxWidth: "850px",
+  width: "min(100% - 48px, 750px)",
   margin: "56px auto 0",
-  padding: "0 24px",
 };
 
 const labStyle: React.CSSProperties = {
-  font: "500 14px var(--sans)",
+  font: "500 14px var(--mono)",
   letterSpacing: "2.5px",
   textTransform: "uppercase",
   color: "var(--mut)",
@@ -27,7 +26,7 @@ const labStyle: React.CSSProperties = {
 const subStyle: React.CSSProperties = {
   margin: "10px 0 44px",
   color: "var(--mut)",
-  font: "400 16px/1.6 var(--sans)",
+  font: "400 16px/1.6 var(--mono)",
 };
 
 export default function HomePage() {
@@ -56,9 +55,10 @@ export default function HomePage() {
         <h2 style={labStyle}>Featured Projects</h2>
         <p style={subStyle}>Things I've built and shipped.</p>
         <div
+          className="projects-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
             gap: "24px",
           }}
         >

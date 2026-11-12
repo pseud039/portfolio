@@ -14,7 +14,7 @@ export const education: EducationItem[] = [
 
 export const contact = {
   title: "Let's work together.",
-  text: "I'm always interested in new opportunities and exciting projects. Whether you have a project in mind or just want to chat about tech, I'd love to hear from you.",
+  text: "I'm always interested in new opportunities and exciting projects.",
   cta: "Get in touch",
   notes: [
     "Currently available for freelance work and full-time opportunities",

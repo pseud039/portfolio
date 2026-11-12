@@ -41,9 +41,9 @@ export function Nav({ brand }: { brand: string }) {
     >
       <div
         style={{
-          maxWidth: "1300px",
+          width: "min(100% - 48px, 750px)",
           margin: "0 auto",
-          padding: "28px 32px",
+          padding: "28px 0",
           display: "grid",
           gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",

@@ -34,11 +34,11 @@ export function ContactCard({ education, contact, profile }: ContactCardProps) {
       {/* Education */}
       <section
         id="education"
-        style={{ maxWidth: "850px", margin: "56px auto 0", padding: "0 24px" }}
+        style={{ width: "min(100% - 48px, 750px)", margin: "56px auto 0" }}
       >
         <h2
           style={{
-            font: "500 14px var(--sans)",
+            font: "500 14px var(--mono)",
             letterSpacing: "2.5px",
             textTransform: "uppercase",
             color: "var(--mut)",
@@ -47,16 +47,16 @@ export function ContactCard({ education, contact, profile }: ContactCardProps) {
         >
           Education
         </h2>
-        <p style={{ margin: "10px 0 44px", color: "var(--mut)", font: "400 16px/1.6 var(--sans)" }}>
+        <p style={{ margin: "10px 0 44px", color: "var(--mut)", font: "400 16px/1.6 var(--mono)" }}>
           School things.
         </p>
         {education.map((e) => (
           <div key={e.school}>
-            <b style={{ fontSize: "18px", fontWeight: 500 }}>
+            <b style={{ font: "500 18px var(--mono)" }}>
               {e.degree} · {e.school}
             </b>
-            <div style={{ color: "var(--mut)" }}>{e.period}</div>
-            <div style={{ color: "var(--mut)" }}>{e.note}</div>
+            <div style={{ color: "var(--mut)", font: "400 14px var(--mono)" }}>{e.period}</div>
+            <div style={{ color: "var(--mut)", font: "400 14px/1.6 var(--mono)" }}>{e.note}</div>
           </div>
         ))}
       </section>
@@ -64,7 +64,7 @@ export function ContactCard({ education, contact, profile }: ContactCardProps) {
       {/* Contact */}
       <section
         id="contact"
-        style={{ maxWidth: "850px", margin: "56px auto 0", padding: "0 24px" }}
+        style={{ width: "min(100% - 48px, 750px)", margin: "56px auto 0" }}
       >
         <div
           style={{
@@ -100,7 +100,7 @@ export function ContactCard({ education, contact, profile }: ContactCardProps) {
           >
             <h2
               style={{
-                font: "700 30px/1.2 var(--sans)",
+                font: "700 30px/1.2 var(--mono)",
                 letterSpacing: "-.5px",
                 margin: 0,
               }}
@@ -111,8 +111,7 @@ export function ContactCard({ education, contact, profile }: ContactCardProps) {
               style={{
                 margin: 0,
                 maxWidth: "448px",
-                fontSize: "14px",
-                lineHeight: 1.7,
+                font: "400 14px/1.7 var(--mono)",
                 color: "var(--mut)",
               }}
             >
@@ -128,7 +127,7 @@ export function ContactCard({ education, contact, profile }: ContactCardProps) {
                 background: "color-mix(in srgb, var(--fg) 80%, var(--bg))",
                 color: "var(--bg)",
                 padding: "10px 20px",
-                font: "600 14px var(--sans)",
+                font: "600 14px var(--mono)",
                 textDecoration: "none",
               }}
             >
@@ -163,7 +162,7 @@ export function ContactCard({ education, contact, profile }: ContactCardProps) {
                 </a>
               ))}
             </div>
-            <div style={{ marginTop: "8px", fontSize: "12px", color: "var(--mut)" }}>
+            <div style={{ marginTop: "8px", font: "400 12px var(--mono)", color: "var(--mut)" }}>
               {contact.notes.map((n) => (
                 <p key={n} style={{ margin: "2px 0" }}>{n}</p>
               ))}
@@ -177,9 +176,9 @@ export function ContactCard({ education, contact, profile }: ContactCardProps) {
         style={{
           textAlign: "center",
           color: "var(--mut)",
-          fontSize: "13px",
+          font: "400 13px var(--mono)",
           padding: "40px 0 60px",
-          maxWidth: "850px",
+          width: "min(100% - 48px, 750px)",
           margin: "0 auto",
         }}
       >

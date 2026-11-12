@@ -84,13 +84,13 @@ export function ExperienceList({ items }: { items: ExperienceItem[] }) {
 
             {/* Org / role */}
             <span style={{ flex: 1, minWidth: 0 }}>
-              <b style={{ display: "block", fontWeight: 500, fontSize: "20px" }}>{e.org}</b>
-              <span style={{ color: "var(--mut)", fontSize: "18px" }}>{e.role}</span>
+              <b style={{ display: "block", font: "500 20px var(--mono)" }}>{e.org}</b>
+              <span style={{ color: "var(--mut)", font: "400 17px var(--mono)" }}>{e.role}</span>
             </span>
 
             {/* Period / location */}
-            <span style={{ textAlign: "right", color: "var(--mut)", fontSize: "15px" }}>
-              <b style={{ display: "block", fontWeight: 400, fontSize: "18px" }}>{e.period}</b>
+            <span style={{ textAlign: "right", color: "var(--mut)", font: "400 14px var(--mono)" }}>
+              <b style={{ display: "block", font: "400 16px var(--mono)" }}>{e.period}</b>
               {e.where}
             </span>
 

@@ -84,7 +84,7 @@ interface HeroProps {
 export function Hero({ profile }: HeroProps) {
   const firstName = profile.name.split(" ")[0];
   return (
-    <div style={{ maxWidth: "850px", margin: "0 auto", padding: "0 24px" }}>
+    <div style={{ width: "min(100% - 48px, 750px)", margin: "0 auto" }}>
       {/* Hero row */}
       <div style={{ display: "flex", gap: "24px", alignItems: "center", paddingTop: "44px" }}>
         {/* Avatar */}
@@ -113,31 +113,40 @@ export function Hero({ profile }: HeroProps) {
 
         {/* Name / role / status */}
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", alignItems: "flex-start", gap: "24px", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
             <div>
-              <h1 style={{ font: "700 56px/1.1 var(--mono)", margin: 0, letterSpacing: "-2px" }}>
+              <h1 className="hero-name" style={{ font: "700 36px/1.1 var(--mono)", margin: 0, letterSpacing: "-1px" }}>
                 {firstName}
+                <span className="sr-only"> {profile.name.slice(firstName.length)}</span>
+                <span
+                  style={{
+                    display: "block",
+                    marginTop: "4px",
+                    font: "400 14px/1.5 var(--mono)",
+                    letterSpacing: 0,
+                    color: "var(--mut)",
+                  }}
+                >
+                  {profile.role}
+                </span>
               </h1>
-              <div style={{ font: "400 17px/1.5 var(--mono)", color: "var(--mut)", marginTop: "10px", letterSpacing: 0 }}>
-                {profile.role}
-              </div>
             </div>
             <span
+              className="hero-status"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                font: "400 14px var(--mono)",
+                font: "400 12px var(--mono)",
                 color: "var(--acc)",
                 border: "1px solid color-mix(in srgb, var(--acc) 45%, transparent)",
                 background: "color-mix(in srgb, var(--acc) 10%, transparent)",
-                padding: "7px 16px",
+                padding: "4px 12px",
                 borderRadius: "999px",
-                marginTop: "30px",
                 whiteSpace: "nowrap",
               }}
             >
-              <i style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--acc)", display: "block" }} />
+              <i className="hero-status-dot" style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--acc)", display: "block" }} />
               {profile.status}
             </span>
           </div>

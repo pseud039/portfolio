@@ -16,7 +16,7 @@ const BackIcon = () => (
 
 export default function ProjectsPage() {
   return (
-    <main style={{ maxWidth: "850px", margin: "0 auto", padding: "0 24px 80px" }}>
+    <main style={{ width: "min(100% - 48px, 750px)", margin: "0 auto", padding: "0 0 80px" }}>
       <Link
         href="/"
         style={{
