@@ -8,7 +8,7 @@ import { profile } from "@/data/profile";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.pseud039.xyz"),
   title: {
-    default: "Saumya Sharma — Backend-leaning Full Stack Developer (Node.js, TypeScript, Go)",
+    default: "Saumya Sharma — Full Stack Developer (Node.js, TypeScript, Go)",
     template: "%s | Saumya Sharma",
   },
   description:
