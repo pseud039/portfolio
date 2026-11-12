@@ -37,16 +37,16 @@ export const experience: ExperienceItem[] = [
     ],
     tech: [],
   },
-  {
-    logo: "F",
-    org: "Freelance",
-    role: "Freelance Developer",
-    period: "Ongoing",
-    where: "Private",
-    points: [
-      "Cafe/Restaurant PoS landing pages.",
-      "A GST verification tool and financial document generators for billingsoftwareindia.in.",
-    ],
-    tech: [],
-  },
+  // {
+  //   logo: "F",
+  //   org: "Freelance",
+  //   role: "Freelance Developer",
+  //   period: "Ongoing",
+  //   where: "Private",
+  //   points: [
+  //     "Cafe/Restaurant PoS landing pages.",
+  //     "A GST verification tool and financial document generators for billingsoftwareindia.in.",
+  //   ],
+  //   tech: [],
+  // },
 ];
