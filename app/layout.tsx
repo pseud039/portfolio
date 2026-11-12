@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Saumya Sharma",
-    title: "Saumya Sharma — Backend-leaning Full Stack Developer",
+    title: "Saumya Sharma — Full Stack Developer",
     description:
       "Node.js, TypeScript and Go projects, production client work, and a few systems I'm proud of. Open to internships.",
     url: "https://www.pseud039.xyz/",
