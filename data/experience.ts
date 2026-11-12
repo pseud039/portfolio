@@ -16,7 +16,7 @@ export const experience: ExperienceItem[] = [
     period: "Oct 2025 — May 2026",
     where: "Remote",
     points: [
-      "Built and maintained backend systems for Doodly, a D2C dairy delivery platform.",
+      "Built and maintained backend systems for a D2C dairy delivery platform.",
       "Routing, Shopify integration, Paytm payments, and MongoDB/Mongoose schema work.",
     ],
     tech: [
