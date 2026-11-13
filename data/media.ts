@@ -43,14 +43,15 @@ export interface AnimeItem {
 }
 
 export const ANIME: AnimeItem[] = [
-  { title: "Haikyuu!!", image: "https://i.pinimg.com/originals/49/6a/a1/496aa1c39d106abe3f8e6491ddf1a3cd.gif", tone: "linear-gradient(135deg,#f0d9d3,#d98878)" },
-  { title: "Demon Slayer", image: "https://i.pinimg.com/originals/0f/37/11/0f3711f58d92227a3b6906e209a8008d.gif", tone: "linear-gradient(135deg,#efe6d9,#c9b48a)" },
-  { title: "Samurai Champloo", image: "	https://i.pinimg.com/originals/e9/f9/bc/e9f9bcd40f63acd92296eeba83ff4efa.gif", tone: "linear-gradient(135deg,#d9d9d9,#8a8a8a)" },
-  { title: "Frieren", image: "	https://i.pinimg.com/originals/3d/aa/c5/3daac57c1a68599a1c7b300038fb446e.gif", tone: "linear-gradient(135deg,#e4dfea,#b8a9d3)" },
-  { title: "Summertime Rendering", image: "https://64.media.tumblr.com/1e83bded3b225e854bccea87e4076ee3/9c09b28ff3668e87-82/s540x810/4430bfa844d9aa378d2c395021277ffc29137438.gifv", tone: "linear-gradient(135deg,#dfead6,#a7c495)" },
-  {title: "Chainsaw Man", image: "https://i.pinimg.com/originals/06/ca/55/06ca55392d209f4cf274bfd243d10bd0.gif", tone: "linear-gradient(135deg,#f5e6e6,#d9a9a9)" },
-  {title: "Jujutsu Kaisen", image: "https://i.pinimg.com/originals/12/ae/c9/12aec958ee8bba6a98ccc58ff6db7fb5.gif", tone: "linear-gradient(135deg,#e0f7fa,#80deea)" },
-  {title: "Attack on Titan", image: "	https://i.pinimg.com/originals/7a/e1/83/7ae183ff0702c9c28208d1b0265575b0.gif", tone: "linear-gradient(135deg,#ffe0b2,#ffcc80)" },
-  {title: "Bleach", image: "	https://i.pinimg.com/originals/b6/fd/55/b6fd552fbc85f3bb5b849199d2436796.gif", tone: "linear-gradient(135deg,#e1bee7,#ce93d8)" },
-  {title: "Black Clover", image: "https://64.media.tumblr.com/2564256c49da9b760f6233efa10d8132/dae7e5f9d0663bfc-ed/s640x960/5af3831a27496351ef9d8d431aa40ac4a7c34f5a.gifv", tone: "linear-gradient(135deg,#c5cae9,#9fa8da)" },
-  {title: "Death Note", image: "https://i.pinimg.com/originals/65/5f/28/655f288b6be57fb1e39729edd9375a83.gif", tone: "linear-gradient(135deg,#b0bec5,#90a4ae)" },]
+  {title: "Black Clover", image: "/assets/anime/black-clover.webp", tone: "linear-gradient(135deg,#c5cae9,#9fa8da)" },
+  { title: "Demon Slayer", image: "/assets/anime/demon-slayer.gif", tone: "linear-gradient(135deg,#efe6d9,#c9b48a)" },
+  {title: "Death Note", image: "/assets/anime/death-note.gif", tone: "linear-gradient(135deg,#b0bec5,#90a4ae)" },
+  { title: "Frieren", image: "/assets/anime/frieren.gif", tone: "linear-gradient(135deg,#e4dfea,#b8a9d3)" },
+  { title: "Samurai Champloo", image: "/assets/anime/samurai-champloo.gif", tone: "linear-gradient(135deg,#d9d9d9,#8a8a8a)" },
+  { title: "Summertime Rendering", image: "/assets/anime/summertime-rendering.gif", tone: "linear-gradient(135deg,#dfead6,#a7c495)" },
+  {title: "Jujutsu Kaisen", image: "/assets/anime/jjk.gif", tone: "linear-gradient(135deg,#e0f7fa,#80deea)" },
+  {title: "Chainsaw Man", image: "/assets/anime/chainsaw-mangif.gif", tone: "linear-gradient(135deg,#f5e6e6,#d9a9a9)" },
+  {title: "Attack on Titan", image: "/assets/anime/aot.gif", tone: "linear-gradient(135deg,#ffe0b2,#ffcc80)" },
+  {title: "Bleach", image: "/assets/anime/bleach.gif", tone: "linear-gradient(135deg,#e1bee7,#ce93d8)" },
+  { title: "Haikyuu!!", image: "/assets/anime/haikyuu.gif", tone: "linear-gradient(135deg,#f0d9d3,#d98878)" },
+]
